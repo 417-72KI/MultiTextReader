@@ -1,0 +1,58 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+
+def defaultEncoding = 'UTF-8'
+[compileJava, compileTestJava]*.options*.encoding = defaultEncoding
+
+repositories {
+    jcenter()
+}
+
+javadoc {
+    options.charSet = defaultEncoding
+    options.encoding = defaultEncoding
+}
+
+dependencies {
+    compile 'org.slf4j:slf4j-api:1.7.21'
+	compile 'com.googlecode.juniversalchardet:juniversalchardet:1.0.3'
+
+    testCompile 'junit:junit:4.12'
+}
+
+// settings for maven
+group = 'jp.natsukishina.multitextreader'
+archivesBaseName = 'MultiTextReader'
+version = '0.0.1-SNAPSHOT'
+
+task javadocJar(type: Jar, dependsOn:javadoc) {
+	classifier = 'javadoc'
+	from javadoc.destinationDir
+	exclude 'src/test/*.java'
+}
+
+artifacts {
+	archives javadocJar
+}
+
+uploadArchives {
+	repositories {
+		mavenDeployer {
+			repository(url: "file:${projectDir}/repos")
+		}
+	}
+}
+
+[install.repositories.mavenInstaller, uploadArchives.repositories.mavenDeployer]*.pom*.whenConfigured { pom ->
+	pom.project {
+		inceptionYear '2012'
+		packaging 'jar'
+		licenses {
+			license {
+				name 'The MIT License (MIT)'
+				url 'http://opensource.org/licenses/mit-license.php'
+				distribution 'repo'
+			}
+		}
+	}
+}

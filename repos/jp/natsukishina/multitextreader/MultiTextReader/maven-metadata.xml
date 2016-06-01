@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>jp.natsukishina.multitextreader</groupId>
+  <artifactId>MultiTextReader</artifactId>
+  <versioning>
+    <versions>
+      <version>0.0.1-SNAPSHOT</version>
+    </versions>
+    <lastUpdated>20160601103943</lastUpdated>
+  </versioning>
+</metadata>
