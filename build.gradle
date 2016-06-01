@@ -22,7 +22,7 @@ dependencies {
 
 // settings for maven
 group = 'jp.natsukishina.multitextreader'
-archivesBaseName = 'MultiTextReader'
+archivesBaseName = 'multi-text-reader'
 version = '0.0.1-SNAPSHOT'
 
 task javadocJar(type: Jar, dependsOn:javadoc) {
