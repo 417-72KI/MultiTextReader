@@ -6,15 +6,20 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * テキストファイルを読み込むためのユーティリティクラス<br>
  * juniversalchardetライブラリを利用し、<br>
- * 文字コードを意識することなくテキストファイルの読み込みすることができます。
+ * 文字コードを意識することなくテキストファイルの読み込みをすることができます。
  * @author 417.72KI
  *
  */
 public class TextReader {
 
+	private static final Logger log = LoggerFactory.getLogger(TextReader.class); 
+	
 	private TextReader() {
 	}
 
@@ -55,7 +60,8 @@ public class TextReader {
 
 	/**
 	 * テキストファイルを読み込みます。<br>
-	 * 読み込み失敗時はnullを返します。
+	 * 読み込み失敗時はnullを返します。<br>
+	 * ※最終行がEOFのみの場合、その行はテキストには含みません。
 	 * @param file - 読み込むファイル
 	 * @return 読み込んだテキスト
 	 */
@@ -77,7 +83,7 @@ public class TextReader {
 			}
 			return sb.toString();
 		} catch (IOException e) {
-			e.printStackTrace();
+			log.error("read failed", e);
 			return null;
 		}
 	}
