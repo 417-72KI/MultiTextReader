@@ -23,7 +23,20 @@ dependencies {
 // settings for maven
 group = 'jp.natsukishina.multitextreader'
 archivesBaseName = 'multi-text-reader'
-version = '0.0.1-SNAPSHOT'
+version = '1.0.0'
+
+jar {
+    manifest {
+        attributes("Implementation-Title": "MultiTextReader",
+                   "Implementation-Version": version,
+                   "Created-By": "417.72KI")
+    }
+}
+
+task sourcesJar(type: Jar, dependsOn:classes) {
+     classifier = 'sources'
+     from sourceSets.main.allSource
+}
 
 task javadocJar(type: Jar, dependsOn:javadoc) {
 	classifier = 'javadoc'
@@ -32,6 +45,7 @@ task javadocJar(type: Jar, dependsOn:javadoc) {
 }
 
 artifacts {
+	archives sourcesJar
 	archives javadocJar
 }
 
