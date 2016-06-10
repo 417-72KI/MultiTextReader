@@ -21,7 +21,7 @@ dependencies {
 }
 
 // settings for maven
-group = 'jp.natsukishina.multitextreader'
+group = 'jp.natsukishina'
 archivesBaseName = 'multi-text-reader'
 version = '1.0.0'
 

@@ -11,6 +11,6 @@ repositories {
 ```
 ```maven
 dependencies {
-  compile 'jp.natsukishina.multitextreader:multi-text-reader:0.0.1-SNAPSHOT'
+  compile 'jp.natsukishina:multi-text-reader:1.0.0'
 }
 ```
